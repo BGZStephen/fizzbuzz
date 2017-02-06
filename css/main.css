@@ -1,0 +1,38 @@
+p {
+  padding: 10px 50px;
+  margin: 5px auto;
+  width: 20%;
+}
+
+.fizzbuzz,
+.fizz,
+.buzz {
+  border-radius: 5px;
+  border: 2px dashed black;
+}
+
+.fizzbuzz {
+  background-color: tomato;
+  color: #fff;
+}
+
+.buzz {
+  background-color: lightblue;
+  color: #000;
+}
+
+.fizz {
+  background-color: lightgreen;
+  color: #000;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h2 {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 1em;
+}
