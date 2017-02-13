@@ -1,13 +1,25 @@
 <!doctype html>
 <html>
 <head>
-  <title>FizzBuzz</title>
+  <title>FizzBuzz Challenge</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
 </head>
 <body>
-  <h1>FizzBuzz Challenge</h1>
-  <h2>Count each number between 1 and 100, for those divisble by 3, represent them with Fizz, for thos divisible by 5, represent with Buzz, for those divisible by both 3 and 5, display FizzBuzz</h2>
-<script src="js/app.js"></script>
+  <div id="main-container">
+    <div id="heading-container">
+      <h1>FizzBuzz Challenge</h1>
+    </div>
+    <div id="intro-container">
+      <h2>INTRO</h2>
+      <p>FizzBuzz is a common coding challenge designed to test developers abilities.
+      <p>The app will display all numbers between 1 and 100, for those divisible by 3, the output is replaced by the word <span class="fizz">"Fizz"</span>, for those divisible by 5, the word <span class="buzz">"Buzz"</span> is displayed, for those divisble by both 3 and 5, <span class="fizzbuzz">"FizzBuzz"</span> is displayed</p>
+    </div>
+    <div id="app-container">
+      <button id="go-button">GO!</button>
+      <script src="js/app.js"></script>
+    </div>
+  </div>
 </body>
 </html>
