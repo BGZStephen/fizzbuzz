@@ -1,30 +1,98 @@
-var fizzVal = 3;
-var buzzVal = 5;
-
-function isFizz(i) {
-  return i % fizzVal == 0; // check if i has a remained when divided by the fizz value.
+var output = document.getElementsByClassName(`screen__output`)[0]
+var numberButtons = document.getElementsByClassName(`calculator__button__number`)
+var cancel = document.getElementById(`clear`)
+var invert = document.getElementById(`invert`)
+var percent = document.getElementById(`percent`)
+var equals = document.getElementById(`equals`)
+var divide = document.getElementById(`divide`)
+var multiply = document.getElementById(`multiply`)
+var minus = document.getElementById(`minus`)
+var add = document.getElementById(`add`)
+var operators = {
+  '+': function(a, b) { return a + b },
+  '-': function(a, b) { return a - b },
+  '*': function(a, b) { return a * b },
+  '/': function(a, b) { return a / b },
 }
 
-function isBuzz(i) {
-  return i % buzzVal == 0; // check if i has a remained when divided by the buzz value.
-}
+var calculationNumberOne;
+var calculationNumberTwo;
+var operator;
 
-var button = document.getElementById("go-button");
-var outputLocation = document.getElementById("app-container")
-var outputHTML = "";
-
-button.onclick = function() {
-  for (var i = 1; i <= 100; i += 1) {
-    //document.write("<p>" + i + "</p>");
-    if(isFizz(i) && isBuzz(i)) { // check if fizz and buzz check return true, if so, output FizzBuzz
-      outputHTML += "<p class='fizzbuzz'>FizzBuzz</p>";
-    } else if (isFizz(i)) {
-      outputHTML += "<p class='fizz'>Fizz</p>"; // check if fizz check return true, if so, output Fizz
-    } else if (isBuzz(i)) {
-      outputHTML += "<p class='buzz'>Buzz</p>"; // check if Buzz check return true, if so, output Buzz
+for(let i = 0; i < numberButtons.length; i++) { // assign click event listener to buttons used for numbers
+  numberButtons[i].addEventListener(`click`, function () {
+    var value = numberButtons[i].innerText;
+    if(output.classList.contains(`answer`)) {
+      output.innerText = value;
+      output.classList.remove(`answer`)
     } else {
-      outputHTML += "<p>" + i + "</p>"; // if neither Fizz or Buzz or FizzBuzz, output number
+      output.innerText += value;
     }
-  }
-  outputLocation.innerHTML = outputHTML
+
+  })
 }
+
+cancel.addEventListener(`click`, function () {
+  console.log(this.innerText)
+  output.innerText = ``
+  calculationNumberOne = ``
+  calculationNumberTwo = ``;
+})
+
+invert.addEventListener(`click`, function () {
+  if(output.innerText[0] === `-`) {
+    output.innerText = parseFloat(output.innerText.replace(/-/, ``))
+  } else {
+    output.innerText = parseFloat(`-` + output.innerText)
+  }
+  console.log(calculationNumberOne)
+})
+
+percent.addEventListener(`click`, function () {
+  if(calculationNumberOne) {
+    calculationNumberTwo = (calculationNumberOne / 100) * (parseInt(output.innerText))
+    console.log(calculationNumberTwo)
+    output.innerText = operators[operator](calculationNumberOne, calculationNumberTwo)
+    output.classList.add(`answer`)
+    calculationNumberOne = ``
+    calculationNumberTwo = ``
+  }
+})
+
+equals.addEventListener(`click`, function () {
+  if(calculationNumberOne) {
+    calculationNumberTwo = parseInt(output.innerText)
+    output.innerText = operators[operator](calculationNumberOne, calculationNumberTwo)
+    output.classList.add(`answer`)
+    calculationNumberOne = ``
+    calculationNumberTwo = ``
+  }
+})
+
+divide.addEventListener(`click`, function () {
+  operator = `/`
+  calculationNumberOne = parseFloat(output.innerText);
+  output.innerText = ``
+  console.log(calculationNumberOne)
+})
+
+multiply.addEventListener(`click`, function () {
+  operator = `*`
+  calculationNumberOne = parseFloat(output.innerText);
+  output.innerText = ``
+  console.log(calculationNumberOne)
+})
+
+minus.addEventListener(`click`, function () {
+  operator = this.innerText
+  calculationNumberOne = parseFloat(output.innerText);
+  output.innerText = ``
+  console.log(calculationNumberOne)
+})
+
+add.addEventListener(`click`, function () {
+  operator = this.innerText
+  calculationNumberOne = parseFloat(output.innerText);
+  output.innerText = ``
+  console.log(calculationNumberOne)
+})
